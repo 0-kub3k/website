@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNDER DEVELOPMENT</title>
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/0-kub3k/website/main/assets/favicon.png">
+    
+    <style>
+        @font-face { 
+            font-family: 'Lato'; 
+            src: url('https://cdn.jsdelivr.net/gh/der46er/website@main/assets/fonts/lato-v24-latin-regular.woff2') format('woff2');
+            font-weight: 400; 
+            font-display: swap; 
+        }
+        @font-face { 
+            font-family: 'Lato'; 
+            src: url('https://cdn.jsdelivr.net/gh/der46er/website@main/assets/fonts/lato-v24-latin-900.woff2') format('woff2');
+            font-weight: 900; 
+            font-display: swap; 
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: #0b0d11;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .container {
+            max-width: 480px;
+            padding: 24px;
+        }
+        h1 {
+            font-size: 18px;
+            font-weight: 900;
+            margin-top: 0;
+            margin-bottom: 8px;
+            color: #ffffff;
+        }
+        p {
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.5;
+            color: #a1a1aa;
+            margin: 0 0 16px 0;
+        }
+        a {
+            color: #60a5fa;
+            text-decoration: underline;
+            font-size: 14px;
+            font-weight: 400;
+        }
+        a:hover {
+            color: #93c5fd;
+        }
+
+        /* Cookie Banner */
+        .cookie-banner {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: #12151c;
+            border-top: 1px solid #1f242f;
+            padding: 16px 24px;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 50;
+        }
+        .cookie-content {
+            max-width: 720px;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 16px;
+            flex-wrap: wrap;
+        }
+        .cookie-text {
+            font-size: 13px;
+            color: #a1a1aa;
+            line-height: 1.4;
+            margin: 0;
+            flex: 1 1 300px;
+        }
+        .cookie-actions {
+            display: flex;
+            gap: 8px;
+        }
+        .btn {
+            font-family: 'Lato', sans-serif;
+            font-size: 13px;
+            font-weight: 700;
+            padding: 8px 16px;
+            border-radius: 4px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s, color 0.2s;
+        }
+        .btn-accept {
+            background-color: #ffffff;
+            color: #0b0d11;
+        }
+        .btn-accept:hover {
+            background-color: #e4e4e7;
+        }
+        .btn-decline {
+            background-color: #1f242f;
+            color: #a1a1aa;
+        }
+        .btn-decline:hover {
+            background-color: #272d3b;
+            color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Under Development</h1>
+        <p>This page is currently being worked on and will be available soon.</p>
+        <a href="https://s.txao.eu/kub3k">https://s.txao.eu/kub3k</a>
+    </div>
+
+    <div id="cookie-banner" class="cookie-banner">
+        <div class="cookie-content">
+            <p class="cookie-text">
+                We use cookies and Google Analytics to analyze site traffic and improve performance.
+            </p>
+            <div class="cookie-actions">
+                <button id="cookie-decline" class="btn btn-decline">Decline</button>
+                <button id="cookie-accept" class="btn btn-accept">Accept</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const GA_MEASUREMENT_ID = 'G-26Q2LKKFPZ';
+
+        function loadGoogleAnalytics() {
+            if (window.gtagLoaded) return;
+            window.gtagLoaded = true;
+
+            const script = document.createElement('script');
+            script.async = true;
+            script.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
+            document.head.appendChild(script);
+
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            window.gtag = gtag;
+            gtag('js', new Date());
+            gtag('config', GA_MEASUREMENT_ID);
+        }
+
+        const banner = document.getElementById('cookie-banner');
+        const acceptBtn = document.getElementById('cookie-accept');
+        const declineBtn = document.getElementById('cookie-decline');
+
+        const consent = localStorage.getItem('cookie_consent');
+
+        if (consent === 'granted') {
+            loadGoogleAnalytics();
+        } else if (!consent) {
+            banner.style.display = 'flex';
+        }
+
+        acceptBtn.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'granted');
+            banner.style.display = 'none';
+            loadGoogleAnalytics();
+        });
+
+        declineBtn.addEventListener('click', () => {
+            localStorage.setItem('cookie_consent', 'denied');
+            banner.style.display = 'none';
+        });
+    </script>
+</body>
+</html>
