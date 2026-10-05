@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kub3k</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://raw.githubusercontent.com/0-kub3k/website/main/assets/favicon.png">
+
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        darkbg: '#08090d',
+                        kubpurple: '#a855f7',
+                        kubgreen: '#22c55e',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            background-color: #08090d;
+            color: #f4f4f5;
+            overflow-x: hidden;
+        }
+
+        .ui-element {
+            transition: transform 0.2s ease, filter 0.2s ease;
+        }
+
+        .ui-element:hover {
+            transform: scale(1.03);
+            filter: drop-shadow(0 0 8px rgba(168, 85, 247, 0.45));
+        }
+
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* Easter Egg Particle Animation */
+        @keyframes floatBurst {
+            0% {
+                transform: translate(0, 0) rotate(0deg) scale(0.6);
+                opacity: 0;
+            }
+            15% {
+                opacity: 1;
+                transform: translate(var(--tx-start), var(--ty-start)) rotate(180deg) scale(1.2);
+            }
+            100% {
+                transform: translate(var(--tx-end), 110vh) rotate(720deg) scale(0.8);
+                opacity: 0;
+            }
+        }
+
+        .favicon-particle {
+            position: fixed;
+            pointer-events: none;
+            z-index: 100;
+            animation: floatBurst var(--duration) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            filter: drop-shadow(0 0 10px rgba(34, 197, 94, 0.6));
+        }
+    </style>
+</head>
+
+<body class="min-h-screen flex flex-col justify-between selection:bg-kubpurple selection:text-white relative">
+
+    <!-- 1920x1080 Background Placeholder -->
+    <div class="fixed inset-0 pointer-events-none z-0 overflow-hidden flex items-center justify-center">
+        <img 
+            data-format-swap
+            src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/1920x1080-05102026.png" 
+            alt="Site Background" 
+            class="w-full h-full object-cover"
+        >
+    </div>
+
+    <!-- Fixed Top Navigation Header (Original 55px Height) -->
+    <header class="fixed top-0 left-0 right-0 w-full z-30 select-none">
+        <div class="relative w-full h-[55px] flex items-center overflow-hidden shadow-xl bg-[#08090d]">
+            
+            <!-- 1920x55 Header Bar Background at 1:1 Original Size -->
+            <img 
+                data-format-swap
+                src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/1920x55-05102026.png" 
+                alt="Header Bar Background" 
+                class="absolute inset-0 w-full h-[55px] object-cover object-center pointer-events-none"
+            >
+
+            <!-- Navigation Overlay Spanning Edge-to-Edge -->
+            <nav class="relative z-10 w-full h-[55px] flex items-center justify-between px-3 sm:px-6">
+                
+                <!-- Far Top-Left: Cup Mascot / Favicon Icon -->
+                <div class="flex items-center h-full py-1.5 shrink-0">
+                    <a href="/" class="flex items-center gap-2 ui-element h-full" title="Home">
+                        <img 
+                            data-format-swap
+                            src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/favicon.png" 
+                            alt="Cup Icon" 
+                            class="h-full w-auto max-h-[38px] object-contain filter drop-shadow-[0_0_6px_rgba(34,197,94,0.4)]"
+                        >
+                    </a>
+                </div>
+
+                <!-- Far Top-Right: 4 Navigation Category Buttons -->
+                <div class="flex items-center gap-2 sm:gap-3 overflow-x-auto no-scrollbar h-full py-1.5 shrink-0 ml-auto">
+                    
+                    <!-- Socials -->
+                    <a href="/socials/" class="ui-element shrink-0 flex items-center justify-center h-full w-auto">
+                        <img 
+                            data-format-swap
+                            src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/300x120-05102026.png" 
+                            alt="Socials" 
+                            class="max-h-full w-auto max-h-[36px] object-contain"
+                        >
+                    </a>
+
+                    <!-- Fun Stuff -->
+                    <a href="/fun-stuff/" class="ui-element shrink-0 flex items-center justify-center h-full w-auto">
+                        <img 
+                            data-format-swap
+                            src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/300x120-05102026.png" 
+                            alt="Fun Stuff" 
+                            class="max-h-full w-auto max-h-[36px] object-contain"
+                        >
+                    </a>
+
+                    <!-- Resource Packs -->
+                    <a href="/resource-packs/" class="ui-element shrink-0 flex items-center justify-center h-full w-auto">
+                        <img 
+                            data-format-swap
+                            src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/500x120-05102026.png" 
+                            alt="Resource Packs" 
+                            class="max-h-full w-auto max-h-[36px] object-contain"
+                        >
+                    </a>
+
+                    <!-- Felipe Universe -->
+                    <a href="/felipe-universe/" class="ui-element shrink-0 flex items-center justify-center h-full w-auto">
+                        <img 
+                            data-format-swap
+                            src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/500x120-05102026.png" 
+                            alt="Felipe Universe" 
+                            class="max-h-full w-auto max-h-[36px] object-contain"
+                        >
+                    </a>
+
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Section with Enlarged Center Boxes -->
+    <main class="flex-grow flex items-center justify-center relative z-10 px-4 pt-20 pb-10">
+        <div class="max-w-6xl w-full flex flex-col md:flex-row items-center justify-center gap-10 md:gap-20">
+            
+            <!-- Left: Mascot Box (Easter Egg Trigger) -->
+            <div id="easter-egg-trigger" class="shrink-0 ui-element flex items-center justify-center w-72 h-72 sm:w-96 sm:h-96 md:w-[440px] md:h-[440px] lg:w-[500px] lg:h-[500px] cursor-pointer select-none active:scale-95 transition-transform duration-100">
+                <img 
+                    id="mascot-img"
+                    data-format-swap
+                    src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/favicon.png" 
+                    alt="Cup Mascot" 
+                    class="w-full h-full object-contain filter drop-shadow-[0_0_25px_rgba(34,197,94,0.35)]"
+                >
+            </div>
+
+            <!-- Right: Enlarged Title & Wavy Text Boxes -->
+            <div class="flex flex-col items-center md:items-start text-center md:text-left w-full max-w-lg sm:max-w-xl gap-6">
+                
+                <!-- Box 1: "kub3k" Title Slot -->
+                <div class="w-full flex items-center justify-center md:justify-start ui-element">
+                    <img 
+                        data-format-swap
+                        src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/700x250-05102026.png" 
+                        alt="kub3k Title" 
+                        class="max-h-32 sm:max-h-40 md:max-h-44 w-full object-contain filter drop-shadow-[0_0_16px_rgba(168,85,247,0.4)]"
+                    >
+                </div>
+
+                <!-- Box 2: Wavy Lines / Description Slot -->
+                <div class="w-full flex items-center justify-center md:justify-start ui-element">
+                    <img 
+                        data-format-swap
+                        src="https://raw.githubusercontent.com/0-kub3k/website/main/assets/placeholders/700x250-05102026.png" 
+                        alt="Wavy Text Lines" 
+                        class="max-h-28 sm:max-h-36 md:max-h-40 w-full object-contain filter drop-shadow-[0_0_16px_rgba(34,197,94,0.4)]"
+                    >
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Bottom Spacing -->
+    <div class="h-6"></div>
+
+    <!-- Automatic Image Extension Fallback Handler -->
+    <script>
+        document.querySelectorAll('img[data-format-swap]').forEach(img => {
+            const formats = ['png', 'svg', 'webp'];
+            img.onerror = function() {
+                const currentSrc = this.src;
+                const match = currentSrc.match(/\.(png|svg|webp)($|\?)/);
+                if (match) {
+                    const currentExt = match[1];
+                    const nextIndex = formats.indexOf(currentExt) + 1;
+                    if (nextIndex < formats.length) {
+                        this.src = currentSrc.replace(`.${currentExt}`, `.${formats[nextIndex]}`);
+                        return;
+                    }
+                }
+                this.style.opacity = '0.3';
+            };
+        });
+
+        // --- Easter Egg Logic (10 Fast Clicks) ---
+        const trigger = document.getElementById('easter-egg-trigger');
+        const mascotImg = document.getElementById('mascot-img');
+        let clickTimestamps = [];
+
+        function triggerFaviconExplosion() {
+            // Screen shake / pulse
+            mascotImg.style.transform = 'scale(1.2) rotate(10deg)';
+            setTimeout(() => { mascotImg.style.transform = ''; }, 300);
+
+            const particleCount = 65;
+            const rect = trigger.getBoundingClientRect();
+            const originX = rect.left + rect.width / 2;
+            const originY = rect.top + rect.height / 2;
+
+            for (let i = 0; i < particleCount; i++) {
+                const particle = document.createElement('img');
+                particle.src = 'https://raw.githubusercontent.com/0-kub3k/website/main/assets/favicon.png';
+                particle.className = 'favicon-particle';
+                
+                const size = Math.floor(Math.random() * 32) + 24; // 24px - 56px
+                particle.style.width = `${size}px`;
+                particle.style.height = `${size}px`;
+                particle.style.left = `${originX - size / 2}px`;
+                particle.style.top = `${originY - size / 2}px`;
+
+                // Calculate random trajectories
+                const angle = Math.random() * Math.PI * 2;
+                const distance = Math.random() * 350 + 100;
+                const txStart = Math.cos(angle) * distance;
+                const tyStart = Math.sin(angle) * distance;
+                const txEnd = txStart + (Math.random() * 400 - 200);
+                const duration = Math.random() * 2 + 2.5; // 2.5s - 4.5s
+
+                particle.style.setProperty('--tx-start', `${txStart}px`);
+                particle.style.setProperty('--ty-start', `${tyStart}px`);
+                particle.style.setProperty('--tx-end', `${txEnd}px`);
+                particle.style.setProperty('--duration', `${duration}s`);
+
+                document.body.appendChild(particle);
+
+                // Auto cleanup
+                setTimeout(() => {
+                    particle.remove();
+                }, duration * 1000);
+            }
+        }
+
+        trigger.addEventListener('click', () => {
+            const now = Date.now();
+            // Keep clicks within the last 3000ms (3 seconds)
+            clickTimestamps = clickTimestamps.filter(t => now - t < 3000);
+            clickTimestamps.push(now);
+
+            // Subtle feedback per click
+            const scale = 1 + (clickTimestamps.length * 0.02);
+            mascotImg.style.transform = `scale(${scale})`;
+            setTimeout(() => { mascotImg.style.transform = ''; }, 120);
+
+            if (clickTimestamps.length >= 10) {
+                clickTimestamps = [];
+                triggerFaviconExplosion();
+            }
+        });
+    </script>
+</body>
+</html>
